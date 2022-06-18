@@ -12,7 +12,6 @@ class BlogService(
 ) {
 
     fun stitchUsersAndPosts(): List<BlogResponse?>? {
-        val decoratedPost = mutableListOf<BlogResponse>()
         val users = usersService.fetchUsers()
         val posts = postService.fetchPosts()
         val usersById: Map<Int, User>? = users?.associateBy { it.id }

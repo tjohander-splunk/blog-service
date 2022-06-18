@@ -6,8 +6,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @EnableMongoRepositories
 @SpringBootApplication
-class DemoApplication
+class BlogApp
 
 fun main(args: Array<String>) {
-    runApplication<DemoApplication>(*args)
+    runApplication<BlogApp>(*args)
 }
