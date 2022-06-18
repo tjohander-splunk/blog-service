@@ -1,6 +1,7 @@
 package com.example.demo.service
 
 import com.example.demo.model.User
+import io.opentelemetry.extension.annotations.WithSpan
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
@@ -13,6 +14,7 @@ class UsersService(
     private val getRestTemplate: RestTemplate
 ) {
 
+    @WithSpan
     fun fetchUsers(): List<User>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
