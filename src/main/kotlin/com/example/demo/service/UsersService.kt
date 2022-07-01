@@ -27,6 +27,7 @@ class UsersService(
         ).body
     }
 
+    @WithSpan
     fun fetchOneUser(id: Int): User? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
