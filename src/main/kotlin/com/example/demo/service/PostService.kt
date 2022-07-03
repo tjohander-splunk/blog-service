@@ -2,7 +2,7 @@ package com.example.demo.service
 
 import com.example.demo.model.Post
 import com.example.demo.model.User
-import io.opentelemetry.extension.annotations.WithSpan
+//import io.opentelemetry.extension.annotations.WithSpan
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -18,7 +18,6 @@ class PostService(
     private val getRestTemplate: RestTemplate
 ) {
 
-    @WithSpan
     fun fetchPosts(): List<Post>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
