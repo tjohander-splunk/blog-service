@@ -1,4 +1,14 @@
 spring:
-  data:
-    mongodb:
-      uri: "mongodb://root:example@localhost:27017/demo"
+  application:
+    name: "blog-service-local"
+otel:
+  traces:
+    exporter: otlp
+    sampler: always_on
+  exporter:
+    otlp:
+      endpoint: http://localhost:4317
+logging:
+  level:
+    root: INFO
+    io.opentelemetry: DEBUG
