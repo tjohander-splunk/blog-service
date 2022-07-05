@@ -2,7 +2,7 @@ package com.example.demo.service
 
 import com.example.demo.model.Post
 import com.example.demo.model.User
-//import io.opentelemetry.extension.annotations.WithSpan
+import io.micrometer.core.annotation.Timed
 import org.springframework.core.ParameterizedTypeReference
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
@@ -15,15 +15,15 @@ inline fun <reified T : Any> typeRef(): ParameterizedTypeReference<T> = object :
 
 @Service
 class PostService(
-    private val getRestTemplate: RestTemplate
+    private val restTemplate: RestTemplate
 ) {
 
     fun fetchPosts(): List<Post>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
         val entity = HttpEntity<User>(headers)
-        return getRestTemplate.exchange(
-            "https://jsonplaceholder.typicode.com/posts",
+        return restTemplate.exchange(
+            "/posts",
             HttpMethod.GET,
             entity,
             typeRef<List<Post>>()

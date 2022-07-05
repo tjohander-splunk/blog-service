@@ -1,7 +1,7 @@
 package com.example.demo.service
 
 import com.example.demo.model.User
-//import io.opentelemetry.extension.annotations.WithSpan
+import io.micrometer.core.annotation.Timed
 import org.springframework.http.HttpEntity
 import org.springframework.http.HttpHeaders
 import org.springframework.http.HttpMethod
@@ -11,34 +11,30 @@ import org.springframework.web.client.RestTemplate
 
 @Service
 class UsersService(
-    private val getRestTemplate: RestTemplate
+    private val restTemplate: RestTemplate
 ) {
 
     fun fetchUsers(): List<User>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
         val entity = HttpEntity<List<User>>(headers)
-        return getRestTemplate.exchange(
-            "https://jsonplaceholder.typicode.com/users",
+        return restTemplate.exchange(
+            "/users",
             HttpMethod.GET,
             entity,
             typeRef<List<User>>()
         ).body
     }
 
-//    @WithSpan
     fun fetchOneUser(id: Int): User? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
         val entity = HttpEntity<User>(headers)
-        return getRestTemplate.exchange(
-            "https://jsonplaceholder.typicode.com/users/$id",
+        return restTemplate.exchange(
+            "/users/$id",
             HttpMethod.GET,
             entity,
             User::class.java
         ).body
     }
-
-
-
 }

@@ -17,13 +17,13 @@ repositories {
 
 dependencies {
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
+    implementation("org.springframework.boot:spring-boot-starter-actuator") {
+        exclude("io.micrometer:micrometer-core")
+    }
+    implementation("io.micrometer:micrometer-core:1.9.1")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    // https://mvnrepository.com/artifact/io.opentelemetry/opentelemetry-api
-//    implementation("io.opentelemetry:opentelemetry-api:1.15.0")
-//    implementation("io.opentelemetry:opentelemetry-extension-annotations:1.15.0")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 

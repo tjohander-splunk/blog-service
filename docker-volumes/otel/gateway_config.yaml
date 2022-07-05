@@ -100,10 +100,13 @@ exporters:
     #translation_rules: []
     #exclude_metrics: []
     # Debug
-    #logging:
-    #loglevel: debug
+    logging:
+      loglevel: debug
 
 service:
+  telemetry:
+    logs:
+      level: debug
   extensions: [health_check, http_forwarder, zpages, memory_ballast]
   pipelines:
     traces:
