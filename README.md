@@ -1,8 +1,8 @@
 A simple service that makes to independent calls to a mock Blog API.  
 
-Users: 
+Users: `https://jsonplaceholder.typicode.com/users` 
 
-Posts:
+Posts: `https://jsonplaceholder.typicode.com/posts`
 
 The payload from the responses are stitched together and returned.
 
