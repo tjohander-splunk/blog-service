@@ -6,7 +6,6 @@ import com.example.demo.model.User
 import com.example.demo.service.BlogService
 import com.example.demo.service.PostService
 import com.example.demo.service.UsersService
-//import io.opentelemetry.extension.annotations.WithSpan
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.ResponseBody
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController
 class BlogController(
     private val usersService: UsersService,
     private val postService: PostService,
-    private val blogService: BlogService
+    private val blogService: BlogService,
 ) {
 
     @GetMapping("/users")

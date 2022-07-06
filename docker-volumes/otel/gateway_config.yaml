@@ -106,7 +106,7 @@ exporters:
 service:
   telemetry:
     logs:
-      level: debug
+      level: INFO
   extensions: [health_check, http_forwarder, zpages, memory_ballast]
   pipelines:
     traces:

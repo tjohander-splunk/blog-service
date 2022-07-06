@@ -18,6 +18,7 @@ class PostService(
     private val restTemplate: RestTemplate
 ) {
 
+    @Timed
     fun fetchPosts(): List<Post>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
