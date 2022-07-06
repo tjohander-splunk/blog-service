@@ -1,7 +1,6 @@
 package com.example.demo.service
 
 import com.example.demo.model.BlogResponse
-import com.example.demo.model.Post
 import com.example.demo.model.User
 import org.springframework.stereotype.Service
 
