@@ -7,7 +7,7 @@ Posts: `https://jsonplaceholder.typicode.com/posts`
 The payload from the responses are stitched together and returned.
 
 # Branches:
-`opentelemetry-java-auto-instrumentation` is intended to demonstrate the capabilities of pure Java Agent auto-instrumentation.
+* `opentelemetry-java-auto-instrumentation` is intended to demonstrate the capabilities of pure Java Agent auto-instrumentation.
 
 In order to run this branch, execute the following in either an IDE Run Config or from the command-line.  Note: running from the command line will require adding the additional `-jar <my-app.jar>` to the program arguments
 ```bash
@@ -19,12 +19,20 @@ In order to run this branch, execute the following in either an IDE Run Config o
 -Dsplunk.metrics.export.interval=3s
 ```
 
-## Generate Load
+* `opentelemetry-java-api` is intended to demonstrate the added capabilities of using the OpenTelemetry Java API to decorate and enhance telemetry data
+
+
+# OTEL Collector
+`docker-compose.yaml` contains a single instance of the Otel Collector, coming from the latest Collector image.  It appears this image is designed to run in Gateway mode, so the additional volume mappings are required for the `gateway_config.yaml` and `.conf` files.
+
+The application is intended to send it's Metrics to this Collector instance, so I have not configured a `realm` in my Java Agent program arguments.
+
+# Generate Load
 Run the `./loadgen` script in the root of this project.
 
 To verify the metrics being emitted by Micrometer, head to `http://localhost:8085/actuator/metrics`
 
 Of particular interest is the reason that we don't see `http.client.requests.xxxx` metrics.  You can confirm that Micrometer is emitting them by hitting `http://localhost:8085/actuator/metrics/http.client.requests`.  Metrics Finder comes up empty, though
 
-`opentelemetry-java-api` is intended to demonstrate the added capabilities of using the OpenTelemetry Java API to decorate and enhance telemetry data
+
 
