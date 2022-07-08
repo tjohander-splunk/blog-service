@@ -13,8 +13,6 @@ import org.springframework.web.client.RestTemplate
 class UsersService(
     private val restTemplate: RestTemplate
 ) {
-
-    @Timed
     fun fetchUsers(): List<User>? {
         val headers = HttpHeaders()
         headers.accept = listOf(MediaType.APPLICATION_JSON)
