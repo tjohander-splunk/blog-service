@@ -1,14 +1,5 @@
 spring:
   application:
     name: "blog-service-local"
-otel:
-  traces:
-    exporter: otlp
-    sampler: always_on
-  exporter:
-    otlp:
-      endpoint: http://localhost:4317
-logging:
-  level:
-    root: INFO
-    io.opentelemetry: DEBUG
+server:
+  port: 8085

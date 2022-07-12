@@ -3,6 +3,7 @@ package com.example.demo.service
 import com.example.demo.model.BlogResponse
 import com.example.demo.model.Post
 import com.example.demo.model.User
+import io.opentelemetry.extension.annotations.WithSpan
 import org.springframework.stereotype.Service
 
 @Service
@@ -11,6 +12,7 @@ class BlogService(
     private val usersService: UsersService
 ) {
 
+    @WithSpan
     fun stitchUsersAndPosts(): List<BlogResponse?>? {
         val users = usersService.fetchUsers()
         val posts = postService.fetchPosts()
