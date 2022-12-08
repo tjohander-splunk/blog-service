@@ -20,6 +20,12 @@ class BlogController(
     private val blogService: BlogService
 ) {
 
+    @GetMapping("/health")
+    @ResponseBody
+    fun healthCheck(): String {
+        return "Healthy!"
+    }
+
     @GetMapping("/users")
     @ResponseBody
     fun getBlogUsers(): List<User>? {
@@ -32,7 +38,7 @@ class BlogController(
         return postService.fetchPosts()
     }
 
-    @GetMapping("/stitch")
+    @GetMapping("/stitch/{userId}")
     @ResponseBody
     // @WithSpan
     fun getDecoratedPosts(): List<BlogResponse?>? {
