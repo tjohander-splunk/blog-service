@@ -1,5 +1,6 @@
 package com.example.demo
 
+import io.micrometer.core.instrument.Metrics
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 

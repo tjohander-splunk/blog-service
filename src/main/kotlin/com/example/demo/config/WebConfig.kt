@@ -1,5 +1,7 @@
 package com.example.demo.config
 
+import io.micrometer.core.instrument.Counter
+import io.micrometer.core.instrument.Metrics
 import org.springframework.boot.web.client.RestTemplateBuilder
 import org.springframework.boot.web.client.RootUriTemplateHandler
 import org.springframework.context.annotation.Bean
@@ -16,4 +18,7 @@ class WebConfig {
         return restTemplateBuilder.uriTemplateHandler(rootUriTemplateHandler)
             .build()
     }
+
+    @Bean
+    fun myCounter(): Counter = Metrics.counter("fetch_posts_count")
 }
