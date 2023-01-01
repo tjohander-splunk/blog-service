@@ -11,7 +11,6 @@ import org.springframework.web.client.RestTemplate
 
 @Configuration
 class WebConfig {
-    // This is needed for Micrometer metrics
     @Bean
     fun restTemplate(restTemplateBuilder: RestTemplateBuilder): RestTemplate? {
         val rootUriTemplateHandler = RootUriTemplateHandler("https://jsonplaceholder.typicode.com")
